@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>LOGIN SELP</title>
+</h:head>
+<body>
+
+	<h:form id="frmLogin">
+		<p:growl id="mensaje" showDetail="true" showSummary="false"></p:growl>
+		<p:panel id="pnlLogin">
+
+			<p:panelGrid id="pnlgLogin" columns="2">
+				
+			
+				<p:outputLabel for="txtUsuario" value="Usuario"/>
+				<p:inputText id="txtUsuario" value="#{loginBean.txtUsuario}" placeholder="USUARIO" required="true" requiredMessage="USUARIO -- OBLIGATORIO"/>
+				
+				<p:outputLabel value="Contraseña"/>
+				<p:password id="txtClave"  value="#{loginBean.txtClave}" placeholder="CONTRASEÑA" feedback="true" inline="true" required="true" requiredMessage="CONTRASEÑA -- OBLIGATORIA"/> 
+				
+				<p:commandButton update="frmLogin"  value="ENTRAR" action="#{loginBean.validarUsuario()}"/>
+
+
+			</p:panelGrid>
+
+
+
+		</p:panel>
+	</h:form>
+
+</body>
+</html>

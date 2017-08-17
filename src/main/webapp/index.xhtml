@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form>
+
+		<p:panel id="panel" header="REGISTRO DE USUARIO"
+			style="margin-left:30% ; margin-right:30% ">
+			<h:panelGrid columns="2" layout="grid">
+				<p:outputLabel value="NOMBRE :"></p:outputLabel>
+				<p:inputText id="nombre"></p:inputText>
+
+				<p:outputLabel value="PRIMER APELLIDO :"></p:outputLabel>
+				<p:inputText id="apellido1"></p:inputText>
+
+				<p:outputLabel value="SEGUNDO APELLIDO :"></p:outputLabel>
+				<p:inputText id="apellido2"></p:inputText>
+
+				<p:outputLabel value="GENERO :"></p:outputLabel>
+				<p:selectOneMenu id="genero">
+					<f:selectItem itemLabel="MASCULINO" itemValue="M" />
+					<f:selectItem itemLabel="FEMENINO" itemValue="F" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="EMAIL :"></p:outputLabel>
+				<p:inputText id="email"></p:inputText>
+
+				<p:outputLabel value="TIPO DOCUMENTO :"></p:outputLabel>
+				<p:selectOneMenu id="tipoDocumento">
+					<f:selectItem itemLabel="T.I." itemValue="TI" />
+					<f:selectItem itemLabel="CEDULA" itemValue="CC" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="No. DOCUMENTO :"></p:outputLabel>
+				<p:inputText id="documento"></p:inputText>
+
+				<p:outputLabel value="DEPARTAMENTO :"></p:outputLabel>
+				<p:selectOneMenu id="departamento">
+					<f:selectItem itemLabel="HUILA" itemValue="HU" />
+
+				</p:selectOneMenu>
+
+				<p:outputLabel value="CIUDAD :"></p:outputLabel>
+				<p:selectOneMenu id="ciudad">
+					<f:selectItem itemLabel="NEIVA" itemValue="NE" />
+
+				</p:selectOneMenu>
+
+				<p:outputLabel value="CENTRO DDE FORMACION :"></p:outputLabel>
+				<p:selectOneMenu id="centroFormacion">
+					<f:selectItem itemLabel="-- SELECIONE --" noSelectionOption="true" />
+					<f:selectItem
+						itemLabel="CENTRO DE LA INDUSTRIA, LA EMPRESA Y LOS SERVICIOS"
+						itemValue="NE" />
+
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</body>
+</html>
