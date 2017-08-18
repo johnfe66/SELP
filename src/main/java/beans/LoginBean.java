@@ -1,6 +1,8 @@
 package beans;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import controller.dao.IUsuarioDAO;
 import controller.impl.UsuarioImpl;
@@ -13,9 +15,14 @@ public class LoginBean {
 	
 	
 	public void validarUsuario() {
+		String mensaje="";
 		IUsuarioDAO usuarioDAO= new UsuarioImpl();
 		
-		usuarioDAO.login(txtUsuario, txtClave);
+		mensaje=usuarioDAO.login(txtUsuario, txtClave);
+		FacesContext context = FacesContext.getCurrentInstance();
+	    
+	    context.addMessage(null, new FacesMessage("Successful", mensaje) );
+	    context.addMessage(null, new FacesMessage("Second Message", mensaje));
 	}
 	
 	public String getTxtUsuario() {
@@ -30,6 +37,9 @@ public class LoginBean {
 	public void setTxtClave(String txtClave) {
 		this.txtClave = txtClave;
 	}
+	
+	
+
 	
 
 }

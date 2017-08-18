@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head><title>REGISTRO DE USUARIO</title></h:head> 
+<body> 
+
+<h:form id="frmRegistro">
+		<p:growl id="mensaje"  showDetail="true" showSummary="false" sticky="false" life="2000" ></p:growl>
+		<div align="center" >
+		<p:panel id="pnlRegistro" header="REGISTRO DE USUARIO" footer="DESARROLLADO POR @ADSI-1197515" 
+		  style="height:240px; width: 500px " >
+
+			<h:panelGrid id="pnlgRegistro" columns="2" cellpadding="5">
+				
+			
+				<p:outputLabel for="txtIdentificacion" value="IDENTIFICACION"/>
+				<p:inputText id="txtIdentificacion" value="#{registroUsuarioBean.identificacion}" 
+				placeholder="IDENTIFICACION" required="true" />
+				
+				
+				
+				<p:commandButton update="mensaje"  value="ENTRAR" actionListener="#{registroUsuarioBean.verficarUsuario()}"/>
+			
+			</h:panelGrid>
+
+
+
+		</p:panel>
+		</div>
+	</h:form>
+</body> 
+</html>

@@ -2,6 +2,7 @@ package controller.dao;
 
 public interface IUsuarioDAO {
 	
-	public void login(String usuario, String clave);
+	public String login(String usuario, String clave);
+	public String verificarUsuario(String identificacion);
 
 }

@@ -11,26 +11,30 @@
 <body>
 
 	<h:form id="frmLogin">
-		<p:growl id="mensaje" showDetail="true" showSummary="false"></p:growl>
-		<p:panel id="pnlLogin">
+		<p:growl id="mensaje"  showDetail="true" showSummary="false" sticky="false" life="2000" ></p:growl>
+		<div align="center" >
+		<p:panel id="pnlLogin" header="BIENVENIDO A SELP --  INICIE SESION" footer="DESARROLLADO POR @ADSI1197515" 
+		  style="height:240px; width: 500px " >
 
-			<p:panelGrid id="pnlgLogin" columns="2">
+			<h:panelGrid id="pnlgLogin" columns="2" cellpadding="5">
 				
 			
 				<p:outputLabel for="txtUsuario" value="Usuario"/>
 				<p:inputText id="txtUsuario" value="#{loginBean.txtUsuario}" placeholder="USUARIO" required="true" requiredMessage="USUARIO -- OBLIGATORIO"/>
 				
 				<p:outputLabel value="Contraseña"/>
-				<p:password id="txtClave"  value="#{loginBean.txtClave}" placeholder="CONTRASEÑA" feedback="true" inline="true" required="true" requiredMessage="CONTRASEÑA -- OBLIGATORIA"/> 
+				<p:password id="txtClave"  value="#{loginBean.txtClave}" placeholder="CONTRASEÑA" 
+				feedback="true" inline="true" required="true" requiredMessage="CONTRASEÑA -- OBLIGATORIA"/> 
 				
-				<p:commandButton update="frmLogin"  value="ENTRAR" action="#{loginBean.validarUsuario()}"/>
+				<p:commandButton update="mensaje"  value="ENTRAR" actionListener="#{loginBean.validarUsuario()}"/>
+				<p:commandButton update="mensaje" value="REGISTRAR USUARIO" actionListener="#{loginBean.validarUsuario()}"/>
 
-
-			</p:panelGrid>
+			</h:panelGrid>
 
 
 
 		</p:panel>
+		</div>
 	</h:form>
 
 </body>
