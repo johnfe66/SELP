@@ -8,6 +8,27 @@ import controller.dao.Conexion;
 import controller.dao.IUsuarioDAO;
 
 public class UsuarioImpl implements IUsuarioDAO {
+	
+	/**
+	 * Se utiliza para decir que persona no existe en la base de datos
+	 */
+	public static final int PERSONA_NO_EXISTE = -1;
+	
+	/**
+	 * Se utiliza para decir que persona existe en la base de datos, pero el usuario
+	 * aun no ha sido creado
+	 */
+	public static final int USUARIO_NO_EXISTE = 0;
+	
+	/**
+	 * Se utiliza para decir que la persona y el usuario ya existe
+	 */
+	public static final int USUARIO_EXISTE = 1;
+	
+	/**
+	 * Se utiliza para decir que hubo un error durante la consulta
+	 */
+	public static final int ERROR = 2;
 
 	@Override
 	public String login(String usuario, String clave) {
@@ -52,8 +73,12 @@ public class UsuarioImpl implements IUsuarioDAO {
 	}
 
 	@Override
-	public String verificarUsuario(String identificacion) {
-		String respuesta = "usuario no existe";
+	public int verificarUsuario(String identificacion) {
+		
+		//String respuesta = "usuario no existe";
+		
+		int respuesta = USUARIO_NO_EXISTE;
+		
 		try {
 			Conexion conexion = new Conexion();
 			conexion.HacerConexion();
@@ -70,15 +95,15 @@ public class UsuarioImpl implements IUsuarioDAO {
 
 				if (rs.getString("id") == null) {
 
-					respuesta = "existe la persona, pero no tiene usuario";
+					respuesta = USUARIO_NO_EXISTE;
 
 				} else {
 
-					respuesta = "el usuario ya existe";
+					respuesta = USUARIO_EXISTE;
 				}
 
 			} else {
-				respuesta = "ud no esta en la base de datos";
+				respuesta = PERSONA_NO_EXISTE;
 
 			}
 
@@ -87,7 +112,7 @@ public class UsuarioImpl implements IUsuarioDAO {
 
 		} catch (SQLException e) {
 			System.out.println("Error listar categorias: " + e);
-			respuesta = "Probelmas con la base de datos";
+			respuesta = ERROR;
 
 		}
 		return respuesta;

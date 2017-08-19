@@ -10,7 +10,9 @@
 <body> 
 
 <h:form id="frmRegistro">
-		<p:growl id="mensaje"  showDetail="true" showSummary="false" sticky="false" life="2000" ></p:growl>
+
+		<p:messages id="mensajes" showDetail="true" autoUpdate="true" closable="true" />
+		
 		<div align="center" >
 		<p:panel id="pnlRegistro" header="REGISTRO DE USUARIO" footer="DESARROLLADO POR @ADSI-1197515" 
 		  style="height:240px; width: 500px " >
@@ -22,9 +24,18 @@
 				<p:inputText id="txtIdentificacion" value="#{registroUsuarioBean.identificacion}" 
 				placeholder="IDENTIFICACION" required="true" />
 				
+				<p:commandButton update="frmRegistro"  value="VERIFICAR" 
+					actionListener="#{registroUsuarioBean.verficarUsuario()}" rendered="#{registroUsuarioBean.respuesta != 0}"/>
+				<p:commandButton value="RECUPERAR CLAVE" rendered="#{registroUsuarioBean.respuesta == 1}"
+					action="recuperarClave"/>
 				
+				<p:outputLabel for="txtClave" value="CLAVE" rendered="#{registroUsuarioBean.respuesta == 0}"/>
+				<p:inputText id="txtClave" value="" 
+				placeholder="CLAVE" required="true" rendered="#{registroUsuarioBean.respuesta == 0}"/>
 				
-				<p:commandButton update="mensaje"  value="ENTRAR" actionListener="#{registroUsuarioBean.verficarUsuario()}"/>
+				<p:outputLabel for="txtClave2" value="COMFIRMAR CLAVE" rendered="#{registroUsuarioBean.respuesta == 0}"/>
+				<p:inputText id="txtClave2" value="" 
+				placeholder="COMFIRMAR CLAVE" required="true" rendered="#{registroUsuarioBean.respuesta == 0}"/>
 			
 			</h:panelGrid>
 

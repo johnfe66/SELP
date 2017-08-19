@@ -19,7 +19,7 @@ public class Conexion {
 
         try {
 
-        	InputStream inputStream = Conexion.class.getClassLoader().getResourceAsStream("/BDpropiedades.properties");
+        	InputStream inputStream = Conexion.class.getClassLoader().getResourceAsStream("BDpropiedades.properties");
             Properties props = new Properties();
             props.load(inputStream);
             ip = props.getProperty("ip");
