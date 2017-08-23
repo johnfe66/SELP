@@ -41,11 +41,11 @@ public class UsuarioImpl implements IUsuarioDAO {
 			conexion.getConnection().setAutoCommit(false);
 
 			Statement stmt = conexion.getConnection().createStatement();
-			String query = "SELECT role.role, usuario.clave FROM selp.usuario"
-					+ " inner join persona on persona.id= usuario.idpersona"
-					+ " inner join role on role.id= usuario.idrole"
-					+ " inner join estado on estado.id= usuario.idestado" + " where persona.identificacion= '" + usuario
-					+ "' and estado.id='1' ;";
+			String query = "SELECT roles.role, usuario.clave FROM selp.usuario " + 
+					"	inner join persona on persona.id= usuario.idpersona " + 
+					"	inner join roles on roles.id= usuario.idrole " + 
+					"	inner join estado on estado.id= usuario.idestado where persona.identificacion= '"+clave+"' " + 
+					"	and estado.id='1' ;";
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
